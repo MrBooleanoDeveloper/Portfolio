@@ -3,231 +3,325 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Luciano | Portfolio Web Junior/Mid-level</title>
-
+  <title>Luciano Caraballo | Web Developer</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: Arial, sans-serif;
-    }
-
-    html {
-      scroll-behavior: smooth;
     }
 
     body {
-      background: #0f172a;
-      color: white;
+      font-family: Inter, Arial, sans-serif;
+      background: #080a12;
+      color: #f5f5f5;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    .container {
+      width: min(1150px, 90%);
+      margin: auto;
     }
 
     header {
       position: fixed;
       top: 0;
       width: 100%;
-      background: rgba(15, 23, 42, 0.9);
-      backdrop-filter: blur(10px);
+      background: rgba(8, 10, 18, 0.8);
+      backdrop-filter: blur(14px);
+      border-bottom: 1px solid rgba(255,255,255,0.08);
       z-index: 100;
-      border-bottom: 1px solid #1e293b;
     }
 
     nav {
-      max-width: 1100px;
-      margin: auto;
-      padding: 18px 10%;
+      height: 72px;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    nav h2 {
-      color: #38bdf8;
+    .logo {
+      font-weight: 800;
+      font-size: 1.2rem;
     }
 
-    nav ul {
-      list-style: none;
+    .logo span {
+      color: #7c5cff;
+    }
+
+    .nav-links {
       display: flex;
-      gap: 25px;
+      gap: 28px;
+      color: #b8b8c7;
+      font-size: 0.95rem;
     }
 
-    nav a {
+    .nav-links a:hover {
       color: white;
-      text-decoration: none;
-      font-size: 15px;
-      transition: 0.3s;
-    }
-
-    nav a:hover {
-      color: #38bdf8;
     }
 
     .hero {
       min-height: 100vh;
-      padding: 120px 10% 60px;
       display: flex;
       align-items: center;
-      background: linear-gradient(135deg, #0f172a, #1e293b);
+      padding-top: 90px;
     }
 
-    .hero-content {
-      max-width: 700px;
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 60px;
+      align-items: center;
     }
 
-    .hero h1 {
-      font-size: 55px;
-      margin-bottom: 15px;
+    .badge {
+      display: inline-block;
+      padding: 8px 14px;
+      background: rgba(124, 92, 255, 0.12);
+      border: 1px solid rgba(124, 92, 255, 0.35);
+      border-radius: 999px;
+      color: #bfb3ff;
+      margin-bottom: 22px;
+      font-size: 0.9rem;
     }
 
-    .hero h1 span {
-      color: #38bdf8;
+    h1 {
+      font-size: clamp(2.5rem, 6vw, 5.5rem);
+      line-height: 1;
+      margin-bottom: 24px;
+      letter-spacing: -3px;
+    }
+
+    h1 span {
+      background: linear-gradient(90deg, #7c5cff, #00d4ff);
+      -webkit-background-clip: text;
+      color: transparent;
     }
 
     .hero p {
-      color: #cbd5e1;
-      font-size: 20px;
-      line-height: 1.6;
-      margin-bottom: 30px;
+      color: #b8b8c7;
+      font-size: 1.15rem;
+      max-width: 650px;
+      margin-bottom: 34px;
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      flex-wrap: wrap;
     }
 
     .btn {
-      display: inline-block;
-      background: #38bdf8;
-      color: #020617;
-      padding: 13px 25px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: bold;
-      transition: 0.3s;
-      border: none;
-      cursor: pointer;
+      padding: 14px 22px;
+      border-radius: 12px;
+      font-weight: 700;
+      transition: 0.25s;
     }
 
-    .btn:hover {
-      background: #0ea5e9;
+    .btn-primary {
+      background: #7c5cff;
+      color: white;
+    }
+
+    .btn-primary:hover {
+      background: #6748ff;
       transform: translateY(-3px);
     }
 
-    section {
-      padding: 90px 10%;
-      max-width: 1200px;
-      margin: auto;
+    .btn-secondary {
+      border: 1px solid rgba(255,255,255,0.15);
+      color: #ddd;
     }
 
-    section h2 {
-      color: #38bdf8;
-      font-size: 35px;
-      margin-bottom: 25px;
+    .btn-secondary:hover {
+      background: rgba(255,255,255,0.08);
+      transform: translateY(-3px);
     }
 
-    section p {
-      color: #cbd5e1;
-      line-height: 1.7;
-      max-width: 800px;
+    .profile-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.08), rgba(255,255,255,0.03));
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: 0 30px 80px rgba(0,0,0,0.4);
     }
 
-    .skills {
+    .profile-top {
+      height: 230px;
+      border-radius: 22px;
+      background:
+        radial-gradient(circle at top left, #7c5cff, transparent 35%),
+        radial-gradient(circle at bottom right, #00d4ff, transparent 30%),
+        #111827;
       display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      margin-top: 30px;
+      align-items: center;
+      justify-content: center;
+      font-size: 4rem;
+      font-weight: 900;
     }
 
-    .skills span {
-      background: #1e293b;
-      border: 1px solid #334155;
-      padding: 12px 18px;
-      border-radius: 10px;
-      transition: 0.3s;
+    .profile-card h3 {
+      margin-top: 22px;
+      font-size: 1.4rem;
     }
 
-    .skills span:hover {
-      border-color: #38bdf8;
-      transform: scale(1.05);
+    .profile-card p {
+      color: #b8b8c7;
+      margin-top: 8px;
     }
 
-    .projects {
+    section {
+      padding: 100px 0;
+    }
+
+    .section-title {
+      margin-bottom: 50px;
+    }
+
+    .section-title span {
+      color: #7c5cff;
+      font-weight: 700;
+    }
+
+    .section-title h2 {
+      font-size: clamp(2rem, 4vw, 3.2rem);
+      letter-spacing: -1px;
+    }
+
+    .about-grid,
+    .services-grid,
+    .projects-grid,
+    .stack-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
+      gap: 24px;
+    }
+
+    .about-grid {
+      grid-template-columns: 1fr 1fr;
     }
 
     .card {
-      background: #1e293b;
-      border: 1px solid #334155;
-      padding: 25px;
-      border-radius: 16px;
-      transition: 0.3s;
-    }
-
-    .card:hover {
-      transform: translateY(-8px);
-      border-color: #38bdf8;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.09);
+      border-radius: 22px;
+      padding: 28px;
     }
 
     .card h3 {
       margin-bottom: 12px;
-      color: white;
+      font-size: 1.3rem;
     }
 
     .card p {
+      color: #b8b8c7;
+    }
+
+    .services-grid {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .service-icon {
+      font-size: 2rem;
       margin-bottom: 18px;
-      font-size: 15px;
     }
 
-    .card a {
-      color: #38bdf8;
-      text-decoration: none;
-      font-weight: bold;
+    .projects-grid {
+      grid-template-columns: repeat(2, 1fr);
     }
 
-    .contacto {
+    .project {
+      overflow: hidden;
+      padding: 0;
+    }
+
+    .project-image {
+      height: 220px;
+      background:
+        linear-gradient(135deg, rgba(124,92,255,.8), rgba(0,212,255,.5)),
+        #111827;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2.4rem;
+      font-weight: 900;
+    }
+
+    .project-content {
+      padding: 26px;
+    }
+
+    .tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 18px;
+    }
+
+    .tag {
+      padding: 6px 10px;
+      background: rgba(124, 92, 255, 0.12);
+      border: 1px solid rgba(124, 92, 255, 0.25);
+      border-radius: 999px;
+      color: #c7bdff;
+      font-size: 0.8rem;
+    }
+
+    .stack-grid {
+      grid-template-columns: repeat(4, 1fr);
+    }
+
+    .skill {
       text-align: center;
+      font-weight: 800;
+      padding: 22px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.045);
+      border: 1px solid rgba(255,255,255,0.09);
     }
 
-    .contacto p {
-      margin: 0 auto 25px;
+    .contact {
+      text-align: center;
+      background:
+        radial-gradient(circle at top, rgba(124,92,255,.2), transparent 35%),
+        #080a12;
+    }
+
+    .contact p {
+      color: #b8b8c7;
+      max-width: 600px;
+      margin: 18px auto 30px;
     }
 
     footer {
+      border-top: 1px solid rgba(255,255,255,0.08);
+      padding: 30px 0;
       text-align: center;
-      padding: 25px;
-      background: #020617;
-      color: #94a3b8;
+      color: #888;
     }
 
-    .reveal {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: 0.7s;
-    }
-
-    .reveal.active {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (max-width: 700px) {
-      nav {
-        flex-direction: column;
-        gap: 15px;
+    @media (max-width: 900px) {
+      .hero-grid,
+      .about-grid,
+      .services-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
       }
 
-      nav ul {
-        gap: 12px;
-        font-size: 14px;
+      .stack-grid {
+        grid-template-columns: repeat(2, 1fr);
       }
 
-      .hero h1 {
-        font-size: 38px;
+      .nav-links {
+        display: none;
       }
 
-      .hero p {
-        font-size: 17px;
-      }
-
-      section {
-        padding: 75px 7%;
+      .hero {
+        padding-top: 120px;
       }
     }
   </style>
@@ -236,112 +330,228 @@
 <body>
 
   <header>
-    <nav>
-      <h2>Luciano.dev</h2>
-      <ul>
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#sobre-mi">Sobre mí</a></li>
-        <li><a href="#proyectos">Proyectos</a></li>
-        <li><a href="#contacto">Contacto</a></li>
-      </ul>
-    </nav>
+    <div class="container">
+      <nav>
+        <div class="logo">Luciano<span>.</span>dev</div>
+        <div class="nav-links">
+          <a href="#about">Sobre mí</a>
+          <a href="#services">Servicios</a>
+          <a href="#projects">Proyectos</a>
+          <a href="#contact">Contacto</a>
+        </div>
+      </nav>
+    </div>
   </header>
 
   <main>
-    <div id="inicio" class="hero">
-      <div class="hero-content">
-        <h1>Hola, soy <span>Luciano</span></h1>
-        <p>
-          Desarrollador Web Junior. Creo páginas modernas, rápidas y adaptadas a celular,
-          usando HTML, CSS y JavaScript.
-        </p>
-        <a href="#proyectos" class="btn">Ver proyectos</a>
-      </div>
-    </div>
 
-    <section id="sobre-mi" class="reveal">
-      <h2>Sobre mí</h2>
-      <p>
-        Me gusta crear sitios web con buen diseño, animaciones suaves y código limpio.
-        Estoy enfocado en mejorar como desarrollador y crear proyectos reales para negocios,
-        marcas personales y emprendimientos.
-      </p>
+    <section class="hero">
+      <div class="container hero-grid">
+        <div>
+          <div class="badge">Web Developer Mid Level</div>
+          <h1>Construyo webs <span>rápidas, modernas y vendibles.</span></h1>
+          <p>
+            Desarrollo sitios web, landing pages, catálogos digitales y aplicaciones simples
+            con enfoque en diseño, rendimiento, experiencia de usuario y resultados reales.
+          </p>
 
-      <div class="skills">
-        <span>HTML</span>
-        <span>CSS</span>
-        <span>JavaScript</span>
-        <span>Responsive Design</span>
-        <span>UI Design</span>
-        <span>GitHub</span>
+          <div class="buttons">
+            <a href="#projects" class="btn btn-primary">Ver proyectos</a>
+            <a href="#contact" class="btn btn-secondary">Trabajemos juntos</a>
+          </div>
+        </div>
+
+        <div class="profile-card">
+          <div class="profile-top">LC</div>
+          <h3>Luciano Caraballo</h3>
+          <p>HTML · CSS · JavaScript · Firebase · APIs · Responsive Design</p>
+        </div>
       </div>
     </section>
 
-    <section id="proyectos" class="reveal">
-      <h2>Proyectos</h2>
-
-      <div class="projects">
-        <div class="card">
-          <h3>Web para Automotora</h3>
-          <p>
-            Landing page moderna con sección de vehículos, contacto,
-            estadísticas y calculadora de venta.
-          </p>
-          <a href="https://multiversemc.github.io/AutomotoraDEMO/">Ver proyecto</a>
-          
+    <section id="about">
+      <div class="container">
+        <div class="section-title">
+          <span>Sobre mí</span>
+          <h2>Desarrollo web con mentalidad de producto.</h2>
         </div>
+
+        <div class="about-grid">
           <div class="card">
-          <h3>Red Social</h3>
-          <p>
-           Red social junior desarrollada con HTML, CSS, JavaScript y Firebase,
-con autenticación real, publicaciones, likes, comentarios y feed global
-en tiempo real.
-          </p>
-          <a href="https://mrbooleanodeveloper.github.io/SocialNetwork/">Ver proyecto</a>
-        </div>
+            <h3>Perfil</h3>
+            <p>
+              Soy desarrollador web enfocado en crear soluciones digitales para negocios,
+              emprendimientos y proyectos reales. No hago solo páginas bonitas: creo sitios
+              pensados para atraer clientes, mostrar productos y generar contacto.
+            </p>
+          </div>
 
-
-        <div class="card">
-          <h3>ClimaUY</h3>
-          <p>
-            App web del clima enfocada en Uruguay, con diseño responsive
-            y datos climáticos.
-          </p>
-          <a href="https://mrbooleanodeveloper.github.io/ClimaUY/">Ver proyecto</a>
+          <div class="card">
+            <h3>Forma de trabajar</h3>
+            <p>
+              Trabajo con interfaces limpias, código ordenado, diseño responsive,
+              integración con APIs, formularios, WhatsApp, Firebase y publicación web.
+              Mi objetivo es que cada proyecto sea rápido, claro y fácil de usar.
+            </p>
+          </div>
         </div>
       </div>
     </section>
 
-    <section id="contacto" class="contacto reveal">
-      <h2>Contacto</h2>
-      <p>
-        ¿Querés una web moderna para tu negocio o emprendimiento?
-      </p>
-      <a href="mailto:tuemail@gmail.com" class="btn">Enviar email</a>
+    <section id="services">
+      <div class="container">
+        <div class="section-title">
+          <span>Servicios</span>
+          <h2>Soluciones web para negocios reales.</h2>
+        </div>
+
+        <div class="services-grid">
+          <div class="card">
+            <div class="service-icon">🚀</div>
+            <h3>Landing Pages</h3>
+            <p>Páginas profesionales para vender servicios, captar clientes y mostrar una marca.</p>
+          </div>
+
+          <div class="card">
+            <div class="service-icon">🛒</div>
+            <h3>Catálogos Online</h3>
+            <p>Catálogos digitales para productos, emprendimientos, tiendas y negocios locales.</p>
+          </div>
+
+          <div class="card">
+            <div class="service-icon">⚙️</div>
+            <h3>Apps Web</h3>
+            <p>Aplicaciones simples con JavaScript, Firebase, APIs externas y lógica personalizada.</p>
+          </div>
+        </div>
+      </div>
     </section>
+
+    <section id="projects">
+      <div class="container">
+        <div class="section-title">
+          <span>Proyectos</span>
+          <h2>Casos que muestran experiencia real.</h2>
+        </div>
+
+        <div class="projects-grid">
+
+          <article class="card project">
+            <div class="project-image">ClimaUY</div>
+            <div class="project-content">
+              <h3>ClimaUY</h3>
+              <p>
+                Aplicación web de clima para Uruguay con búsqueda por ciudad,
+                datos en tiempo real, diseño responsive y consumo de API.
+              </p>
+              <div class="tags">
+                <span class="tag">HTML</span>
+                <span class="tag">CSS</span>
+                <span class="tag">JavaScript</span>
+                <span class="tag">API</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-image">AutoWeb</div>
+            <div class="project-content">
+              <h3>Web para Automotora</h3>
+              <p>
+                Sitio web para automotora con vehículos, contacto, estadísticas
+                y calculadora básica de tasación.
+              </p>
+              <div class="tags">
+                <span class="tag">Responsive</span>
+                <span class="tag">UI</span>
+                <span class="tag">JavaScript</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-image">JUST</div>
+            <div class="project-content">
+              <h3>Catálogo JUST</h3>
+              <p>
+                Catálogo online para productos, con diseño limpio,
+                categorías y contacto directo por WhatsApp.
+              </p>
+              <div class="tags">
+                <span class="tag">Catálogo</span>
+                <span class="tag">WhatsApp</span>
+                <span class="tag">CSS</span>
+              </div>
+            </div>
+          </article>
+
+          <article class="card project">
+            <div class="project-image">Auth</div>
+            <div class="project-content">
+              <h3>Login con Firebase</h3>
+              <p>
+                Sistema de autenticación con registro, inicio de sesión y conexión
+                a Firebase Authentication.
+              </p>
+              <div class="tags">
+                <span class="tag">Firebase</span>
+                <span class="tag">Auth</span>
+                <span class="tag">JavaScript</span>
+              </div>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <section id="stack">
+      <div class="container">
+        <div class="section-title">
+          <span>Stack</span>
+          <h2>Tecnologías que uso.</h2>
+        </div>
+
+        <div class="stack-grid">
+          <div class="skill">PHP</div>
+          <div class="skill">React</div>
+          <div class="skill">Java</div>
+          <div class="skill">Python</div>
+          <div class="skill">CSS3</div>
+          <div class="skill">JavaScript</div>
+          <div class="skill">Firebase</div>
+          <div class="skill">APIs REST</div>
+          <div class="skill">GitHub Pages</div>
+          <div class="skill">Responsive</div>
+          <div class="skill">SEO Básico</div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact" class="contact">
+      <div class="container">
+        <div class="section-title">
+          <span>Contacto</span>
+          <h2>¿Creamos algo?</h2>
+        </div>
+
+        <p>
+          Si tenés un negocio, emprendimiento o idea digital, puedo ayudarte
+          a convertirlo en una web profesional, moderna y lista para publicar.
+        </p>
+
+        <div class="buttons" style="justify-content:center;">
+          <a href="mailto:lucianocaraba7@gmail.com" class="btn btn-primary">Enviar email</a>
+          <a href="https://wa.me/59891955531" class="btn btn-secondary">WhatsApp</a>
+        </div>
+      </div>
+    </section>
+
   </main>
 
   <footer>
-    <p>© 2026 Luciano. Todos los derechos reservados.</p>
+    <p>© 2026 Luciano Caraballo. Todos los derechos reservados.</p>
   </footer>
-
-  <script>
-    const elementos = document.querySelectorAll(".reveal");
-
-    function mostrarElementos() {
-      elementos.forEach(elemento => {
-        const posicion = elemento.getBoundingClientRect().top;
-        const alturaPantalla = window.innerHeight;
-
-        if (posicion < alturaPantalla - 100) {
-          elemento.classList.add("active");
-        }
-      });
-    }
-
-    window.addEventListener("scroll", mostrarElementos);
-    mostrarElementos();
-  </script>
 
 </body>
 </html>
